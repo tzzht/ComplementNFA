@@ -1,0 +1,15 @@
+never { 
+T0_init:
+  if
+  :: (p0) -> goto accept_S1
+  :: (p1) -> goto T0_S2
+  fi;
+accept_S1:
+  if
+  :: (p1) -> goto T0_S2
+  fi;
+T0_S2:
+  if
+  :: (p0) -> goto accept_S1
+  fi;
+}
