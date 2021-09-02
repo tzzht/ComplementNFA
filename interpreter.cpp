@@ -165,4 +165,4 @@ void Interpreter::increaseLocation(unsigned int loc) {
 
 unsigned int Interpreter::location() const {
     return m_location_;
-}
+}  
