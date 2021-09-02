@@ -360,5 +360,5 @@ void StateSet::StateSetIntersection(StateSet state_set_left, StateSet state_set_
     {
         m_state_set_.insert(*it_of_right);
     }
-}
+}   
 
