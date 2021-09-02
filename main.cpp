@@ -16,4 +16,4 @@ int main(int argc, char **argv)
     i.PrintComplementNfa();
     
     return res;
-}
+}      
