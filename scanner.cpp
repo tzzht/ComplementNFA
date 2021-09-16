@@ -339,8 +339,8 @@ int yyFlexLexer::yylex()
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 21
-#define YY_END_OF_BUFFER 22
+#define YY_NUM_RULES 22
+#define YY_END_OF_BUFFER 23
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -348,15 +348,16 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[63] =
+static const flex_int16_t yy_accept[72] =
     {   0,
-       19,   19,   22,   20,   19,   19,   11,   20,    5,    6,
-       20,   16,   17,   20,   20,   20,   20,   20,   20,   20,
-        7,   20,    8,   19,   10,    0,    4,    0,   14,    0,
-        0,    3,    2,    0,    0,    9,    0,    0,    0,    0,
-        0,    0,    0,    0,    0,    0,    0,    0,    0,   12,
-        0,    1,    0,    0,    0,   13,   15,    0,    1,    0,
-       18,    0
+       19,   19,    0,    0,   23,   20,   19,   19,   11,   20,
+        5,    6,   20,   20,   16,   17,   20,   20,   20,   20,
+       20,   20,   20,    7,   20,    8,   22,   19,   10,    0,
+        0,    4,    0,   14,    0,    0,    3,    2,    0,    0,
+        9,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+        0,   21,    0,    0,    0,    0,    0,    0,   12,    0,
+        1,    0,    0,    0,   13,   15,    0,    1,    0,   18,
+        0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -365,16 +366,16 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    4,    5,    1,    1,    1,    1,    6,    1,    7,
-        8,    1,    1,    1,    9,    1,    1,   10,   11,   11,
-       11,   11,   11,   11,   11,   11,   11,   12,   13,    1,
-        1,   14,    1,    1,    1,    1,    1,    1,    1,    1,
+        8,    9,    1,    1,   10,    1,   11,   12,   13,   13,
+       13,   13,   13,   13,   13,   13,   13,   14,   15,    1,
+        1,   16,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,   15,   16,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,   17,    1,   18,   19,   20,   19,
+        1,    1,   17,   18,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,   19,    1,   20,   21,   22,   21,
 
-       21,   22,   23,   19,   24,   19,   19,   25,   19,   26,
-       27,   28,   19,   29,   30,   31,   32,   33,   19,   19,
-       19,   19,   34,   35,   36,    1,    1,    1,    1,    1,
+       23,   24,   25,   21,   26,   21,   21,   27,   21,   28,
+       29,   30,   21,   31,   32,   33,   34,   35,   21,   21,
+       21,   21,   36,   37,   38,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -391,72 +392,76 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[37] =
+static const YY_CHAR yy_meta[39] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1
+        1,    1,    1,    1,    1,    1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[63] =
+static const flex_int16_t yy_base[74] =
     {   0,
-        0,    0,   99,  100,   35,   38,  100,   92,  100,  100,
-       83,   84,  100,   85,   33,   35,   37,   40,   46,   48,
-      100,   59,  100,   61,  100,   89,  100,   75,  100,   71,
-       65,  100,  100,   56,   56,  100,   64,   51,   65,   55,
-       63,   62,   55,   60,   56,   54,   51,   57,   47,  100,
-       43,   62,   43,   36,   23,  100,  100,   25,  100,   18,
-      100,  100
+        0,    0,    0,    0,  110,  111,   37,   40,  111,  103,
+      111,  111,   92,   98,   92,  111,   93,   33,   35,   37,
+       40,   46,   48,  111,   67,  111,  111,   63,  111,   99,
+       93,  111,   82,  111,   78,   72,  111,  111,   63,   63,
+      111,   71,   86,   45,   51,   71,   61,   69,   68,   61,
+       61,  111,   61,   62,   60,   57,   63,   54,  111,   51,
+       63,   56,   56,   48,  111,  111,   51,  111,   45,  111,
+      111,   61,   50
     } ;
 
-static const flex_int16_t yy_def[63] =
+static const flex_int16_t yy_def[74] =
     {   0,
-       62,    1,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,    0
+       71,    1,   72,   72,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       73,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   73,   73,   71,   71,   71,   71,   71,   71,
+       73,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+        0,   71,   71
     } ;
 
-static const flex_int16_t yy_nxt[137] =
+static const flex_int16_t yy_nxt[150] =
     {   0,
-        4,    5,    6,    5,    7,    8,    9,   10,   11,    4,
-        4,   12,   13,    4,    4,   14,    4,   15,   16,   16,
-       16,   17,   16,   18,   16,   19,   16,   16,   16,   16,
-       20,   16,   16,   21,   22,   23,   24,   24,   24,   24,
-       24,   24,   29,   29,   29,   29,   29,   29,   59,   29,
-       29,   61,   30,   28,   31,   29,   29,   29,   29,   60,
-       32,   33,   24,   24,   24,   44,   34,   59,   45,   52,
-       52,   52,   52,   58,   46,   57,   35,   56,   55,   54,
-       53,   51,   50,   49,   48,   47,   43,   42,   41,   40,
-       39,   38,   37,   36,   28,   27,   26,   25,   62,    3,
+        6,    7,    8,    7,    9,   10,   11,   12,    6,   13,
+       14,    6,    6,   15,   16,    6,    6,   17,    6,   18,
+       19,   19,   19,   20,   19,   21,   19,   22,   19,   19,
+       19,   19,   23,   19,   19,   24,   25,   26,   28,   28,
+       28,   28,   28,   28,   34,   34,   34,   34,   34,   34,
+       43,   34,   34,   51,   35,   52,   36,   34,   34,   34,
+       34,   27,   37,   38,   28,   28,   28,   53,   39,   51,
+       54,   71,   61,   61,   61,   61,   55,   68,   40,   70,
+       33,   69,   68,   67,   66,   65,   64,   63,   62,   60,
+       59,   58,   57,   56,   44,   50,   49,   48,   47,   46,
 
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62
+       45,   44,   42,   41,   33,   32,   31,   30,   29,   71,
+        5,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71
     } ;
 
-static const flex_int16_t yy_chk[137] =
+static const flex_int16_t yy_chk[150] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    5,    5,    5,    6,
-        6,    6,   15,   15,   16,   16,   17,   17,   60,   18,
-       18,   58,   15,   55,   17,   19,   19,   20,   20,   54,
-       17,   18,   24,   24,   24,   38,   19,   53,   38,   44,
-       44,   52,   52,   51,   38,   49,   20,   48,   47,   46,
-       45,   43,   42,   41,   40,   39,   37,   35,   34,   31,
-       30,   28,   26,   22,   14,   12,   11,    8,    3,   62,
+        1,    1,    1,    1,    1,    1,    1,    1,    7,    7,
+        7,    8,    8,    8,   18,   18,   19,   19,   20,   20,
+       73,   21,   21,   44,   18,   44,   20,   22,   22,   23,
+       23,   72,   20,   21,   28,   28,   28,   45,   22,   51,
+       45,   51,   53,   53,   61,   61,   45,   69,   23,   67,
+       64,   63,   62,   60,   58,   57,   56,   55,   54,   50,
+       49,   48,   47,   46,   43,   42,   40,   39,   36,   35,
 
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-       62,   62,   62,   62,   62,   62
+       33,   31,   30,   25,   17,   15,   14,   13,   10,    5,
+       71,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71,   71,
+       71,   71,   71,   71,   71,   71,   71,   71,   71
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -485,15 +490,17 @@ static const flex_int16_t yy_chk[137] =
 	// Action is called when length of the token is known.
 	#define YY_USER_ACTION m_driver_.increaseLocation(yyleng);
 	
-#line 489 "scanner.cpp"
+#line 494 "scanner.cpp"
 /* 使语法分析器不要添加默认规则 */
 /* 不使用yywrap()(在到达yyin(是文件句柄)的结束位置时, 会自动调用yywrap(). 目的是为了调整yyin的值并继续进行词法分析.) */
 /* 生成c++ scanner类 */
 /* flex默认会生成的两个类, FlexLexer 和 yyFlexLexer, 后者是前者的子类(在flex自带的FlexLexer.h中定义的). 在我们写的Scanner.h中会定义一个yyFlexLexer的子类Scanner. 这条指令会让flex产生的cpp文件中定义Scanner::yylex()方法(通过#define YY_DECL int Scanner::yylex()实现)(yylex()是词法分析的主要函数)(也会定义yyFlexLexer方法(虚函数), 这个方法会报错). 但是yylex()的返回值默认是int, bison3 使用symbol_type, 需要返回值是Parser::symbol_type, 所以在scanner.h中我们#undef YY_DECL, 然后#define YY_DECL Parser::symbol_type Scanner::get_next_token(), 所以我们词法分析的主要函数就从yylex()变成了get_next_token().*/
 /* 将类yyFlexLexer更名为tzzht_FlexLexer */
-#line 496 "scanner.cpp"
+
+#line 502 "scanner.cpp"
 
 #define INITIAL 0
+#define COMMENTS 1
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -623,10 +630,10 @@ YY_DECL
 		}
 
 	{
-#line 54 "scanner.l"
+#line 58 "scanner.l"
 
 
-#line 631 "scanner.cpp"
+#line 638 "scanner.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -653,13 +660,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 63 )
+				if ( yy_current_state >= 72 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 100 );
+		while ( yy_base[yy_current_state] != 111 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -685,7 +692,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 56 "scanner.l"
+#line 60 "scanner.l"
 {   
                     //cout << "Scanner: state '" << yytext << "'." << endl; 
                     return tzzht::Parser::make_STATE(yytext, tzzht::location());
@@ -693,7 +700,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 60 "scanner.l"
+#line 64 "scanner.l"
 {   
                     //cout << "Scanner: 'if'" << endl;
                     return tzzht::Parser::make_IF(tzzht::location());
@@ -701,7 +708,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 64 "scanner.l"
+#line 68 "scanner.l"
 {   
                     //cout << "Scanner: 'fi'" << endl;
                     return tzzht::Parser::make_FI(tzzht::location());
@@ -709,7 +716,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 68 "scanner.l"
+#line 72 "scanner.l"
 {   
                     //cout << "Scanner: '::'" << endl;
                     return tzzht::Parser::make_DOTS(tzzht::location());
@@ -717,7 +724,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 72 "scanner.l"
+#line 76 "scanner.l"
 {   
                     //cout << "Scanner: '('" << endl;
                     return tzzht::Parser::make_LPAREN(tzzht::location());
@@ -725,7 +732,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 76 "scanner.l"
+#line 80 "scanner.l"
 {   
                     //cout << "Scanner: ')'" << endl;
                     return tzzht::Parser::make_RPAREN(tzzht::location());
@@ -733,7 +740,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 80 "scanner.l"
+#line 84 "scanner.l"
 {   
                     //cout << "Scanner: '{'" << endl;
                     return tzzht::Parser::make_LBRACE(tzzht::location());
@@ -741,7 +748,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 84 "scanner.l"
+#line 88 "scanner.l"
 {   
                     //cout << "Scanner: '}'" << endl;
                     return tzzht::Parser::make_RBRACE(tzzht::location());
@@ -749,7 +756,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 88 "scanner.l"
+#line 92 "scanner.l"
 {   
                     //cout << "Scanner: '||'" << endl;
                     return tzzht::Parser::make_OR(tzzht::location());
@@ -757,7 +764,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 92 "scanner.l"
+#line 96 "scanner.l"
 {   
                     //cout << "Scanner: '&&'" << endl;
                     return tzzht::Parser::make_AND(tzzht::location());
@@ -765,7 +772,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 96 "scanner.l"
+#line 100 "scanner.l"
 {   
                     //cout << "Scanner: '!'" << endl;
                     return tzzht::Parser::make_NOT(tzzht::location());
@@ -773,7 +780,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 100 "scanner.l"
+#line 104 "scanner.l"
 {   
                     //cout << "Scanner: 'true'" << endl;
                     return tzzht::Parser::make_TRUE(tzzht::location());
@@ -781,7 +788,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 104 "scanner.l"
+#line 108 "scanner.l"
 {   
                     //cout << "Scanner: 'false'" << endl;
                     return tzzht::Parser::make_FALSE(tzzht::location());
@@ -789,7 +796,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 108 "scanner.l"
+#line 112 "scanner.l"
 {   
                     //cout << "Scanner: ' << yytext << '" << endl;
                     return tzzht::Parser::make_WORD(yytext, tzzht::location());
@@ -797,7 +804,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 112 "scanner.l"
+#line 116 "scanner.l"
 {   
                     //cout << "Scanner: 'never'" << endl;
                     return tzzht::Parser::make_NEVER(tzzht::location());
@@ -805,7 +812,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 116 "scanner.l"
+#line 120 "scanner.l"
 {   
                     //cout << "Scanner: ':'" << endl;
                     return tzzht::Parser::make_COLON(tzzht::location());
@@ -813,7 +820,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 120 "scanner.l"
+#line 124 "scanner.l"
 {   
                     //cout << "Scanner: ';'" << endl;
                     return tzzht::Parser::make_SEMICOLON(tzzht::location());
@@ -821,7 +828,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 124 "scanner.l"
+#line 128 "scanner.l"
 {   
                     //cout << "Scanner: '-> goto'" << endl;
                     return tzzht::Parser::make_ARROR(tzzht::location());
@@ -830,28 +837,35 @@ YY_RULE_SETUP
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 128 "scanner.l"
+#line 132 "scanner.l"
 { /* ignored */ }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 129 "scanner.l"
+#line 133 "scanner.l"
 { 
                     cout << "Scanner: unknown character '" << yytext << "'" << endl; 
                 }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 133 "scanner.l"
+case YY_STATE_EOF(COMMENTS):
+#line 137 "scanner.l"
 {   
                     return yyterminate();   
                 }
 	YY_BREAK
 case 21:
+/* rule 21 can match eol */
 YY_RULE_SETUP
-#line 138 "scanner.l"
+#line 140 "scanner.l"
+{}
+	YY_BREAK
+case 22:
+YY_RULE_SETUP
+#line 141 "scanner.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 856 "scanner.cpp"
+#line 870 "scanner.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1266,7 +1280,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 63 )
+			if ( yy_current_state >= 72 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1294,11 +1308,11 @@ int yyFlexLexer::yy_get_next_buffer()
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 63 )
+		if ( yy_current_state >= 72 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 62);
+	yy_is_jam = (yy_current_state == 71);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1812,6 +1826,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 138 "scanner.l"
+#line 141 "scanner.l"
 
 

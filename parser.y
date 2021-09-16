@@ -92,6 +92,7 @@
 %type <std::vector<pair<tzzht::Proposition *, string>>> edges 
 %type <pair<tzzht::Proposition *, string>> edge
 %type <tzzht::Proposition *> proposition
+%type <std::string> state
 
 %start nfa
 
@@ -100,7 +101,6 @@ nfa:                                                            {
                                                                     cout << "*** PARSER BEGIN ***" << endl;
                                                                 }	
     |   NEVER LBRACE nfa RBRACE		                            {
-                                                                    driver.PrintNfa();
                                                                     cout << "*** PARSER EXIT ***" << endl;
                                                                 }
     |   transition nfa                                          {
@@ -114,33 +114,12 @@ nfa:                                                            {
 
 
 transition:
-	    STATE COLON IF edges FI SEMICOLON 	                    { 
-                                                                    std::string tmpstr = $1;
-                                                                    $1 = $1.substr($1.find('_') + 1);
-                                                                    tzzht::Nfa::StateType state_type = tzzht::Nfa::StateType::NormalState;
-                                                                    if(tmpstr.find("init") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::InitState;
-                                                                        $1 = "S0";
-                                                                    }
-                                                                    if(tmpstr.find("acc") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::AccState;
-                                                                    }
-                                                                    if(tmpstr.find("init") != std::string::npos && tmpstr.find("acc") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::InitAndAccState;
-                                                                    }
-                                                                    driver.m_nfa_.AddState($1, state_type);
-
+	    state COLON IF edges FI SEMICOLON 	                    { 
                                                                     for(auto it = $4.begin(); it != $4.end(); it ++)
                                                                     {
                                                                         tzzht::Transition transition($1, it->first, it->second);
                                                                         driver.m_nfa_.AddTransition(transition);
                                                                     }
-                                                                    
-                                                                    
-                                                                    
                                                                 }
 	;
 
@@ -155,31 +134,17 @@ edges:
 	;
 
 edge:
-	    DOTS proposition ARROR STATE 		                    { 
+	    DOTS proposition ARROR state 		                    { 
                                                                     $$.first = $2;
-                                                                    std::string tmpstr = $4;
-                                                                    $4 = $4.substr($4.find('_') + 1);
-                                                                    tzzht::Nfa::StateType state_type = tzzht::Nfa::StateType::NormalState;
-                                                                    if(tmpstr.find("init") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::InitState;
-                                                                        $4 = "S0";
-                                                                    }
-                                                                    if(tmpstr.find("acc") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::AccState;
-                                                    
-                                                                    }
-                                                                    if(tmpstr.find("init") != std::string::npos && tmpstr.find("acc") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::InitAndAccState;
-                                                                    }
                                                                     $$.second = $4;
-                                                                    driver.m_nfa_.AddState($4, state_type);
                                                                 }
 	;
 	
-
+state:
+        STATE                                                   {
+                                                                    $$ = $1;
+                                                                    driver.m_nfa_.AddState($1);
+                                                                }
 
 proposition:
 	    LPAREN proposition RPAREN			                    { 

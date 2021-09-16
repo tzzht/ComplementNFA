@@ -25,6 +25,9 @@ public:
     int parse();
     
     void ComplementNfa();
+    void ConvertNfaToStateFormula();
+    void CalStateFormula();
+    void ConvertStateFormulaToNfa();
     void PrintNfa(){
         m_nfa_.PrintNfa();
     }
@@ -51,6 +54,7 @@ private:
     Parser m_parser_;
     Nfa m_nfa_;
     Nfa m_complement_nfa_;
+    StateFormula m_state_formula_;
     unsigned int m_location_;          // Used by scanner
 };
 

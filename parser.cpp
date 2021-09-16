@@ -271,6 +271,7 @@ namespace  tzzht  {
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         value.YY_MOVE_OR_COPY< std::string > (YY_MOVE (that.value));
         break;
 
@@ -278,7 +279,7 @@ namespace  tzzht  {
         value.YY_MOVE_OR_COPY< std::vector<pair<tzzht::Proposition *, string>> > (YY_MOVE (that.value));
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         value.YY_MOVE_OR_COPY< tzzht::Proposition * > (YY_MOVE (that.value));
         break;
 
@@ -307,6 +308,7 @@ namespace  tzzht  {
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         value.move< std::string > (YY_MOVE (that.value));
         break;
 
@@ -314,7 +316,7 @@ namespace  tzzht  {
         value.move< std::vector<pair<tzzht::Proposition *, string>> > (YY_MOVE (that.value));
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         value.move< tzzht::Proposition * > (YY_MOVE (that.value));
         break;
 
@@ -343,6 +345,7 @@ namespace  tzzht  {
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         value.copy< std::string > (that.value);
         break;
 
@@ -350,7 +353,7 @@ namespace  tzzht  {
         value.copy< std::vector<pair<tzzht::Proposition *, string>> > (that.value);
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         value.copy< tzzht::Proposition * > (that.value);
         break;
 
@@ -378,6 +381,7 @@ namespace  tzzht  {
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         value.move< std::string > (that.value);
         break;
 
@@ -385,7 +389,7 @@ namespace  tzzht  {
         value.move< std::vector<pair<tzzht::Proposition *, string>> > (that.value);
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         value.move< tzzht::Proposition * > (that.value);
         break;
 
@@ -649,6 +653,7 @@ namespace  tzzht  {
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         yylhs.value.emplace< std::string > ();
         break;
 
@@ -656,7 +661,7 @@ namespace  tzzht  {
         yylhs.value.emplace< std::vector<pair<tzzht::Proposition *, string>> > ();
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         yylhs.value.emplace< tzzht::Proposition * > ();
         break;
 
@@ -681,20 +686,19 @@ namespace  tzzht  {
           switch (yyn)
             {
   case 2:
-#line 99 "parser.y"
+#line 100 "parser.y"
                                                                 {
                                                                     cout << "*** PARSER BEGIN ***" << endl;
                                                                 }
-#line 689 "parser.cpp"
+#line 694 "parser.cpp"
     break;
 
   case 3:
-#line 102 "parser.y"
+#line 103 "parser.y"
                                                                     {
-                                                                    driver.PrintNfa();
                                                                     cout << "*** PARSER EXIT ***" << endl;
                                                                 }
-#line 698 "parser.cpp"
+#line 702 "parser.cpp"
     break;
 
   case 4:
@@ -702,7 +706,7 @@ namespace  tzzht  {
                                                                 {
                                                                     /* do nothing */
                                                                 }
-#line 706 "parser.cpp"
+#line 710 "parser.cpp"
     break;
 
   case 5:
@@ -710,144 +714,114 @@ namespace  tzzht  {
                                                                 {
                                                                     /* do nothing */
                                                                 }
-#line 714 "parser.cpp"
+#line 718 "parser.cpp"
     break;
 
   case 6:
 #line 117 "parser.y"
                                                                     { 
-                                                                    std::string tmpstr = yystack_[5].value.as < std::string > ();
-                                                                    yystack_[5].value.as < std::string > () = yystack_[5].value.as < std::string > ().substr(yystack_[5].value.as < std::string > ().find('_') + 1);
-                                                                    tzzht::Nfa::StateType state_type = tzzht::Nfa::StateType::NormalState;
-                                                                    if(tmpstr.find("init") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::InitState;
-                                                                        yystack_[5].value.as < std::string > () = "S0";
-                                                                    }
-                                                                    if(tmpstr.find("acc") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::AccState;
-                                                                    }
-                                                                    if(tmpstr.find("init") != std::string::npos && tmpstr.find("acc") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::InitAndAccState;
-                                                                    }
-                                                                    driver.m_nfa_.AddState(yystack_[5].value.as < std::string > (), state_type);
-
                                                                     for(auto it = yystack_[2].value.as < std::vector<pair<tzzht::Proposition *, string>> > ().begin(); it != yystack_[2].value.as < std::vector<pair<tzzht::Proposition *, string>> > ().end(); it ++)
                                                                     {
                                                                         tzzht::Transition transition(yystack_[5].value.as < std::string > (), it->first, it->second);
                                                                         driver.m_nfa_.AddTransition(transition);
                                                                     }
-                                                                    
-                                                                    
-                                                                    
                                                                 }
-#line 747 "parser.cpp"
+#line 730 "parser.cpp"
     break;
 
   case 7:
-#line 148 "parser.y"
+#line 127 "parser.y"
                                                                                                 { 
                                                                     yylhs.value.as < std::vector<pair<tzzht::Proposition *, string>> > ().push_back(yystack_[0].value.as < pair<tzzht::Proposition *, string> > ());
                                                                 }
-#line 755 "parser.cpp"
+#line 738 "parser.cpp"
     break;
 
   case 8:
-#line 151 "parser.y"
+#line 130 "parser.y"
                                                                                         { 
                                                                     yystack_[0].value.as < std::vector<pair<tzzht::Proposition *, string>> > ().push_back(yystack_[1].value.as < pair<tzzht::Proposition *, string> > ());
                                                                     yylhs.value.as < std::vector<pair<tzzht::Proposition *, string>> > () = yystack_[0].value.as < std::vector<pair<tzzht::Proposition *, string>> > ();
                                                                 }
-#line 764 "parser.cpp"
+#line 747 "parser.cpp"
     break;
 
   case 9:
-#line 158 "parser.y"
+#line 137 "parser.y"
                                                                             { 
                                                                     yylhs.value.as < pair<tzzht::Proposition *, string> > ().first = yystack_[2].value.as < tzzht::Proposition * > ();
-                                                                    std::string tmpstr = yystack_[0].value.as < std::string > ();
-                                                                    yystack_[0].value.as < std::string > () = yystack_[0].value.as < std::string > ().substr(yystack_[0].value.as < std::string > ().find('_') + 1);
-                                                                    tzzht::Nfa::StateType state_type = tzzht::Nfa::StateType::NormalState;
-                                                                    if(tmpstr.find("init") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::InitState;
-                                                                        yystack_[0].value.as < std::string > () = "S0";
-                                                                    }
-                                                                    if(tmpstr.find("acc") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::AccState;
-                                                    
-                                                                    }
-                                                                    if(tmpstr.find("init") != std::string::npos && tmpstr.find("acc") != std::string::npos)
-                                                                    {
-                                                                        state_type = tzzht::Nfa::StateType::InitAndAccState;
-                                                                    }
                                                                     yylhs.value.as < pair<tzzht::Proposition *, string> > ().second = yystack_[0].value.as < std::string > ();
-                                                                    driver.m_nfa_.AddState(yystack_[0].value.as < std::string > (), state_type);
                                                                 }
-#line 791 "parser.cpp"
+#line 756 "parser.cpp"
     break;
 
   case 10:
-#line 185 "parser.y"
-                                                                            { 
-                                                                    yylhs.value.as < tzzht::Proposition * > () = yystack_[1].value.as < tzzht::Proposition * > (); 
+#line 144 "parser.y"
+                                                                {
+                                                                    yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
+                                                                    driver.m_nfa_.AddState(yystack_[0].value.as < std::string > ());
                                                                 }
-#line 799 "parser.cpp"
+#line 765 "parser.cpp"
     break;
 
   case 11:
-#line 188 "parser.y"
-                                                                                    { 
-                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::Not, yystack_[0].value.as < tzzht::Proposition * > ()); 
+#line 150 "parser.y"
+                                                                            { 
+                                                                    yylhs.value.as < tzzht::Proposition * > () = yystack_[1].value.as < tzzht::Proposition * > (); 
                                                                 }
-#line 807 "parser.cpp"
+#line 773 "parser.cpp"
     break;
 
   case 12:
-#line 191 "parser.y"
-                                                                            { 
-                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::And, yystack_[2].value.as < tzzht::Proposition * > (), yystack_[0].value.as < tzzht::Proposition * > ()); 
+#line 153 "parser.y"
+                                                                                    { 
+                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::Not, yystack_[0].value.as < tzzht::Proposition * > ()); 
                                                                 }
-#line 815 "parser.cpp"
+#line 781 "parser.cpp"
     break;
 
   case 13:
-#line 194 "parser.y"
+#line 156 "parser.y"
                                                                             { 
-                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::Or, yystack_[2].value.as < tzzht::Proposition * > (), yystack_[0].value.as < tzzht::Proposition * > ()); 
+                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::And, yystack_[2].value.as < tzzht::Proposition * > (), yystack_[0].value.as < tzzht::Proposition * > ()); 
                                                                 }
-#line 823 "parser.cpp"
+#line 789 "parser.cpp"
     break;
 
   case 14:
-#line 197 "parser.y"
-                                                                                            { 
-                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::Literal, yystack_[0].value.as < std::string > ());  
+#line 159 "parser.y"
+                                                                            { 
+                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::Or, yystack_[2].value.as < tzzht::Proposition * > (), yystack_[0].value.as < tzzht::Proposition * > ()); 
                                                                 }
-#line 831 "parser.cpp"
+#line 797 "parser.cpp"
     break;
 
   case 15:
-#line 200 "parser.y"
+#line 162 "parser.y"
                                                                                             { 
-                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::True);
+                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::Literal, yystack_[0].value.as < std::string > ());  
                                                                 }
-#line 839 "parser.cpp"
+#line 805 "parser.cpp"
     break;
 
   case 16:
-#line 203 "parser.y"
+#line 165 "parser.y"
+                                                                                            { 
+                                                                    yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::True);
+                                                                }
+#line 813 "parser.cpp"
+    break;
+
+  case 17:
+#line 168 "parser.y"
                                                                                             { 
                                                                     yylhs.value.as < tzzht::Proposition * > () = new tzzht::Proposition(tzzht::Proposition::OperationType::False);
                                                                 }
-#line 847 "parser.cpp"
+#line 821 "parser.cpp"
     break;
 
 
-#line 851 "parser.cpp"
+#line 825 "parser.cpp"
 
             default:
               break;
@@ -1118,79 +1092,79 @@ namespace  tzzht  {
   }
 
 
-  const signed char  Parser ::yypact_ninf_ = -16;
+  const signed char  Parser ::yypact_ninf_ = -10;
 
   const signed char  Parser ::yytable_ninf_ = -1;
 
   const signed char
    Parser ::yypact_[] =
   {
-       4,   -15,    -6,    12,     4,    18,     4,   -16,   -16,    10,
-      13,    -1,    20,    10,   -16,    -1,    -1,   -16,   -16,   -16,
-      -4,     8,   -16,    19,     0,    -1,    -1,    23,   -16,   -16,
-      19,    19,   -16
+       4,   -10,    -6,     3,     4,     1,     4,   -10,   -10,     5,
+      12,    17,   -10,    -1,    20,    17,    -1,    -1,   -10,   -10,
+     -10,    -4,     8,   -10,    19,     0,    -1,    -1,    23,   -10,
+     -10,    19,    19,   -10
   };
 
   const signed char
    Parser ::yydefact_[] =
   {
-       2,     0,     0,     0,     2,     0,     2,     1,     4,     0,
-       0,     0,     0,     7,     3,     0,     0,    15,    16,    14,
-       0,     0,     8,    11,     0,     0,     0,     0,     6,    10,
-      13,    12,     9
+       2,    10,     0,     0,     2,     0,     2,     1,     4,     0,
+       0,     0,     3,     0,     0,     7,     0,     0,    16,    17,
+      15,     0,     0,     8,    12,     0,     0,     0,     0,     6,
+      11,    14,    13,     9
   };
 
   const signed char
    Parser ::yypgoto_[] =
   {
-     -16,    16,   -16,    17,   -16,    -8
+     -10,    16,   -10,    15,   -10,     6,    -9
   };
 
   const signed char
    Parser ::yydefgoto_[] =
   {
-      -1,     3,     4,    12,    13,    20
+      -1,     3,     4,    14,    15,     5,    21
   };
 
   const signed char
    Parser ::yytable_[] =
   {
-      25,    26,    15,     5,    25,    26,     6,    23,    24,    16,
-       1,    29,     7,    17,    18,    19,    27,    30,    31,    11,
-       8,     2,    10,    25,    26,     9,    14,    28,    21,    32,
-      22
+      26,    27,    16,     7,    26,    27,     6,    24,    25,    17,
+       1,    30,    11,    18,    19,    20,    28,    31,    32,     9,
+       8,     2,    10,    26,    27,    12,    13,    29,    22,     1,
+      23,     0,     0,     0,    33
   };
 
   const signed char
    Parser ::yycheck_[] =
   {
-       4,     5,     3,    18,     4,     5,    12,    15,    16,    10,
-       6,    11,     0,    14,    15,    16,    20,    25,    26,     9,
-       4,    17,     6,     4,     5,     7,    13,    19,     8,     6,
-      13
+       4,     5,     3,     0,     4,     5,    12,    16,    17,    10,
+       6,    11,     7,    14,    15,    16,    20,    26,    27,    18,
+       4,    17,     6,     4,     5,    13,     9,    19,     8,     6,
+      15,    -1,    -1,    -1,    28
   };
 
   const signed char
    Parser ::yystos_[] =
   {
-       0,     6,    17,    22,    23,    18,    12,     0,    22,     7,
-      22,     9,    24,    25,    13,     3,    10,    14,    15,    16,
-      26,     8,    24,    26,    26,     4,     5,    20,    19,    11,
-      26,    26,     6
+       0,     6,    17,    22,    23,    26,    12,     0,    22,    18,
+      22,     7,    13,     9,    24,    25,     3,    10,    14,    15,
+      16,    27,     8,    24,    27,    27,     4,     5,    20,    19,
+      11,    27,    27,    26
   };
 
   const signed char
    Parser ::yyr1_[] =
   {
        0,    21,    22,    22,    22,    22,    23,    24,    24,    25,
-      26,    26,    26,    26,    26,    26,    26
+      26,    27,    27,    27,    27,    27,    27,    27
   };
 
   const signed char
    Parser ::yyr2_[] =
   {
        0,     2,     0,     4,     2,     1,     6,     1,     2,     4,
-       3,     2,     3,     3,     1,     1,     1
+       1,     3,     2,     3,     3,     1,     1,     1
   };
 
 
@@ -1203,15 +1177,15 @@ namespace  tzzht  {
   "END", "error", "$undefined", "NOT", "OR", "AND", "STATE", "IF", "FI",
   "DOTS", "LPAREN", "RPAREN", "LBRACE", "RBRACE", "TRUE", "FALSE", "WORD",
   "NEVER", "COLON", "SEMICOLON", "ARROR", "$accept", "nfa", "transition",
-  "edges", "edge", "proposition", YY_NULLPTR
+  "edges", "edge", "state", "proposition", YY_NULLPTR
   };
 
 #if YYDEBUG
   const unsigned char
    Parser ::yyrline_[] =
   {
-       0,    99,    99,   102,   106,   109,   117,   148,   151,   158,
-     185,   188,   191,   194,   197,   200,   203
+       0,   100,   100,   103,   106,   109,   117,   127,   130,   137,
+     144,   150,   153,   156,   159,   162,   165,   168
   };
 
   // Print the state stack on the debug stream.
@@ -1246,9 +1220,9 @@ namespace  tzzht  {
 
 #line 9 "parser.y"
 } //  tzzht 
-#line 1250 "parser.cpp"
+#line 1224 "parser.cpp"
 
-#line 208 "parser.y"
+#line 173 "parser.y"
 
 
 /* Parser实现错误处理接口 */

@@ -1,10 +1,12 @@
 #ifndef NFA_H
 #define NFA_H
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include <stdint.h>
 #include <set>
+#include <map>
 
 
 namespace tzzht {
@@ -30,8 +32,7 @@ public:
     Proposition(const OperationType operation, Proposition *left);
     Proposition(const OperationType operation, Proposition *left, Proposition *right);
     ~Proposition();
-
-    // Not yet implemented
+    std::string operationtypestr() const;
     std::string str() const;
 private:
     OperationType m_operation_;
@@ -64,6 +65,10 @@ public:
 
     std::string StateSetStr() const;
 
+    void PrintStateSet() const{
+        std::cout << StateSetStr() << std::endl;
+    }
+
     void AddState(std::string state) {
         m_state_set_.insert(state);
     }
@@ -76,20 +81,28 @@ public:
     /* 重载<运算符 */
     bool operator < (const StateSet & right)const   
     {
-        std::set<std::string> right_state_set = right.GetStateSet();
-        if(GetStateSetSize() == right_state_set.size())
-        {
-            for(auto itl = m_state_set_.begin(), itr = right_state_set.begin(); itl != m_state_set_.end() && itr != right_state_set.end(); itl ++, itr ++)
-            {
-                if(*itl != *itr) return *itl < *itr;
-            }
-            return false;
-        }
-        else
-        {
-            return GetStateSetSize() < right.GetStateSetSize();
-        } 
+        // std::set<std::string> right_state_set = right.GetStateSet();
+        // if(GetStateSetSize() == right_state_set.size())
+        // {
+        //     for(auto itl = m_state_set_.begin(), itr = right_state_set.begin(); itl != m_state_set_.end() && itr != right_state_set.end(); itl ++, itr ++)
+        //     {
+        //         if(*itl != *itr) return *itl < *itr;
+        //     }
+        //     return false;
+        // }
+        // else
+        // {
+        //     return GetStateSetSize() < right.GetStateSetSize();
+        // } 
+        return StateSetStr() < right.StateSetStr();
 
+    }
+
+    bool operator == (const StateSet & right)const
+    {
+        // bool tmp = StateSetStr() == right.StateSetStr();
+        // std::cout << StateSetStr() << " == " << right.StateSetStr() << " " << tmp << std::endl;
+        return StateSetStr() == right.StateSetStr();
     }
 
 private:
@@ -138,6 +151,7 @@ public:
     }
 
 
+
 private:
     std::string m_start_state_name_;
     Proposition *m_proposition_;
@@ -157,8 +171,8 @@ public:
     };
     Nfa();
     ~Nfa();
-    void AddState(std::string state_name, StateType state_type);
-    void AddComplementState(StateSet state_set, StateType state_type);
+    void AddState(std::string state_name);
+    void AddComplementState(StateSet state_set);
     void AddTransition(Transition transition);
     bool IsAccState(std::string state_name);
     std::string GetInitState() const;
@@ -192,6 +206,24 @@ public:
 private:
     Proposition *m_proposition_;
     StateSet m_state_set_;
+};
+
+
+class StateFormula {
+public:
+    StateFormula() : 
+        m_state_formulas_()
+    {}
+    ~StateFormula(){}
+    std::map<StateSet, std::vector<Clause>> GetStateFormulas() const{
+        return m_state_formulas_;
+    }
+    void InsertStateFormula(StateSet state_set, std::vector<Transition> transitions);
+    void CalStateFormula();
+    void PrintStateFormula() const;
+    std::vector<Clause> ConvertCNFToDNF(std::vector<std::vector<Clause>> clause_intersection);
+private:
+    std::map<StateSet, std::vector<Clause>> m_state_formulas_;
 };
 
 

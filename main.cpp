@@ -11,9 +11,14 @@ int main(int argc, char **argv)
     Interpreter i;
     int res = i.parse();
     cout << "Parse complete. Result = " << res << endl;
-    i.ComplementNfa();
+
+    cout << "NFA: " << endl;
+    i.PrintNfa();
+
+    i.ComplementNfa();  
+
     cout << "Complement NFA: " << endl;
     i.PrintComplementNfa();
     
     return res;
-}      
+}

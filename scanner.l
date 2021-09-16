@@ -31,16 +31,19 @@
 /* 将类yyFlexLexer更名为tzzht_FlexLexer */
 %option prefix="tzzht_"
 
+
+%x COMMENTS
+
 STATE           (T0|accept)_(S[0-9]+|init|all)
 IF			    "if"
 FI			    "fi"
 DOTS			"::"
-LPAREN			\(
-RPAREN			\)
-LBRACE			\{
-RBRACE			\}
-OR			    \|\|
-AND			    &&
+LPAREN			"("
+RPAREN			")"
+LBRACE			"{"
+RBRACE			"}"
+OR			    "||"
+AND			    "&&"
 NOT			    "!"
 TRUE			"true"
 FALSE			"false"
@@ -50,6 +53,7 @@ COLON			":"
 SEMICOLON		";"
 ARROR			"-> goto"
 WS			    [ \r\n\t]*
+COMMENTS        "/*"([^*]|\*+[^/*])*"*/"
 
 %%
 
@@ -133,6 +137,5 @@ WS			    [ \r\n\t]*
 <<EOF>>         {   
                     return yyterminate();   
                 }
-
-
+{COMMENTS}      {}
 %%

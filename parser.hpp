@@ -406,6 +406,7 @@ namespace  tzzht  {
 
       // STATE
       // WORD
+      // state
       char dummy3[sizeof (std::string)];
 
       // edges
@@ -630,6 +631,7 @@ switch (yytype)
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         value.template destroy< std::string > ();
         break;
 
@@ -637,7 +639,7 @@ switch (yytype)
         value.template destroy< std::vector<pair<tzzht::Proposition *, string>> > ();
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         value.template destroy< tzzht::Proposition * > ();
         break;
 
@@ -1367,8 +1369,8 @@ switch (yytype)
     enum
     {
       yyeof_ = 0,
-      yylast_ = 30,     ///< Last index in yytable_.
-      yynnts_ = 6,  ///< Number of nonterminal symbols.
+      yylast_ = 34,     ///< Last index in yytable_.
+      yynnts_ = 7,  ///< Number of nonterminal symbols.
       yyfinal_ = 7, ///< Termination state number.
       yyntokens_ = 21  ///< Number of tokens.
     };
@@ -1448,6 +1450,7 @@ switch (yytype)
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         value.move< std::string > (std::move (that.value));
         break;
 
@@ -1455,7 +1458,7 @@ switch (yytype)
         value.move< std::vector<pair<tzzht::Proposition *, string>> > (std::move (that.value));
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         value.move< tzzht::Proposition * > (std::move (that.value));
         break;
 
@@ -1484,6 +1487,7 @@ switch (yytype)
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         value.copy< std::string > (YY_MOVE (that.value));
         break;
 
@@ -1491,7 +1495,7 @@ switch (yytype)
         value.copy< std::vector<pair<tzzht::Proposition *, string>> > (YY_MOVE (that.value));
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         value.copy< tzzht::Proposition * > (YY_MOVE (that.value));
         break;
 
@@ -1527,6 +1531,7 @@ switch (yytype)
 
       case 6: // STATE
       case 16: // WORD
+      case 26: // state
         value.move< std::string > (YY_MOVE (s.value));
         break;
 
@@ -1534,7 +1539,7 @@ switch (yytype)
         value.move< std::vector<pair<tzzht::Proposition *, string>> > (YY_MOVE (s.value));
         break;
 
-      case 26: // proposition
+      case 27: // proposition
         value.move< tzzht::Proposition * > (YY_MOVE (s.value));
         break;
 
@@ -1594,7 +1599,7 @@ switch (yytype)
 
 #line 9 "parser.y"
 } //  tzzht 
-#line 1598 "parser.hpp"
+#line 1603 "parser.hpp"
 
 
 
