@@ -16,11 +16,14 @@ Interpreter::Interpreter() :
     m_parser_(m_scanner_, *this),
     m_nfa_(),
     m_complement_nfa_(),
-    m_location_(0)
+    m_location_(0),
+    m_state_formula_()
 {}
 
-void Interpreter::ComplementNfa() {
 
+void Interpreter::ComplementNfa() 
+{
+    /*
     std::string init_state = m_nfa_.GetInitState();
     StateSet init_state_set;
     init_state_set.AddState(init_state);
@@ -150,7 +153,57 @@ void Interpreter::ComplementNfa() {
         else state_type = Nfa::StateType::NormalState;
         m_complement_nfa_.AddComplementState(state_set, state_type);
     }
+    */
+    ConvertNfaToStateFormula();
+    
+    CalStateFormula();
+
+    std::cout << "StateFormula: " << std::endl;
+    m_state_formula_.PrintStateFormula();
+
+    ConvertStateFormulaToNfa();
 }
+
+
+void Interpreter::ConvertNfaToStateFormula()
+{
+    set<string> all_states = m_nfa_.GetAllStates();
+    for(auto it = all_states.begin(); it != all_states.end(); it ++)
+    {
+        m_state_formula_.InsertStateFormula(StateSet(*it), m_nfa_.GetTransitionOfAState(*it));
+    }
+}
+
+void Interpreter::CalStateFormula()
+{
+    m_state_formula_.CalStateFormula();
+}
+
+void Interpreter::ConvertStateFormulaToNfa()
+{
+    //tt节点
+    StateSet tt_state_set("tt");
+    m_complement_nfa_.AddComplementState(tt_state_set);
+    m_complement_nfa_.AddTransition(Transition(tt_state_set, new Proposition(Proposition::OperationType::True), tt_state_set));
+
+    
+    std::map<StateSet, std::vector<Clause>> state_formulas = m_state_formula_.GetStateFormulas();
+    for(auto iti = state_formulas.begin(); iti != state_formulas.end(); iti ++)
+    {
+        StateSet start_state_set = iti->first;
+        m_complement_nfa_.AddComplementState(start_state_set);
+        std::vector<Clause> all_clauses = iti->second;
+        for(auto itj = all_clauses.begin(); itj != all_clauses.end(); itj ++)
+        {
+            Clause clause = *itj;
+            m_complement_nfa_.AddTransition(Transition(start_state_set, clause.GetProposition(), clause.GetStateSet()));
+        }
+    }
+
+}
+
+
+
 int Interpreter::parse() {
     m_location_ = 0;
     /* Run the syntactic analysis, and return 0 on success, 1 otherwise. Both routines are equivalent, operator() being more C++ish. */
@@ -165,4 +218,4 @@ void Interpreter::increaseLocation(unsigned int loc) {
 
 unsigned int Interpreter::location() const {
     return m_location_;
-}  
+}
